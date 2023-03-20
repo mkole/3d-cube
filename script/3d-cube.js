@@ -1,87 +1,76 @@
 // Initial angles of rotation
-let thetaX = 0;
-let thetaY = 0;
-let thetaZ = 0;
-
-// Rotation speed
-let rotationSpeed = 0.01;
+let angleX = 0;
+let angleY = 0;
+let cubeSize =
+  window.innerHeight > window.innerWidth
+    ? window.innerWidth / 5
+    : window.innerHeight / 5;
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   smooth(8);
 }
 
-// Cube size
-let t =
-  window.innerHeight > window.innerWidth
-    ? window.innerWidth / 9.5
-    : window.innerHeight / 9.5; // originally 10
-
 function draw() {
-  translate(-width / 2, -height / 2);
-  background(0);
-  rectMode(CENTER);
+  background(255, 246, 240);
   noStroke();
 
-  // Save the transformation state
-  push();
-  translate(width / 2, height / 2, 0);
-  rotateX(thetaX);
-  rotateY(thetaY);
-  rotateZ(thetaZ);
+  // Set the rotation of the cube based on mouse movement
+  angleX = map(mouseY, 0, height, -PI, PI);
+  angleY = map(mouseX, 0, width, -PI, PI);
 
-  // Draw the sides of the cube and apply color
-  beginShape(TRIANGLE_FAN);
+  // Rotate the camera to look at the center of the sketch
+  rotateX(angleX);
+  rotateY(angleY);
 
-  // front side
-  fill(color(0xff, 0x14, 0xeb));
-  vertex(-t, -t, 0);
-  vertex(t, -t, 0);
-  vertex(t, t, 0);
-  vertex(-t, t, 0);
+  // Draw the cube with different colors on each side
+  fill(color("#e76f51"));
+  beginShape();
+  vertex(-cubeSize / 2, -cubeSize / 2, -cubeSize / 2); // Front face
+  vertex(cubeSize / 2, -cubeSize / 2, -cubeSize / 2);
+  vertex(cubeSize / 2, cubeSize / 2, -cubeSize / 2);
+  vertex(-cubeSize / 2, cubeSize / 2, -cubeSize / 2);
+  endShape(CLOSE);
 
-  // right side
-  fill(color(0x14, 0xf7, 0xff));
-  vertex(t, -t, 0);
-  vertex(t, -t, -2 * t);
-  vertex(t, t, -2 * t);
-  vertex(t, t, 0);
+  fill(color("#f4a261"));
+  beginShape();
+  vertex(-cubeSize / 2, -cubeSize / 2, cubeSize / 2); // Back face
+  vertex(cubeSize / 2, -cubeSize / 2, cubeSize / 2);
+  vertex(cubeSize / 2, cubeSize / 2, cubeSize / 2);
+  vertex(-cubeSize / 2, cubeSize / 2, cubeSize / 2);
+  endShape(CLOSE);
 
-  // back side
-  fill(color(0xff, 0x14, 0xeb));
-  vertex(t, -t, -2 * t);
-  vertex(t, t, -2 * t);
-  vertex(-t, t, -2 * t);
-  vertex(-t, -t, -2 * t);
+  fill(color("#e9c46a"));
+  beginShape();
+  vertex(-cubeSize / 2, -cubeSize / 2, -cubeSize / 2); // Left face
+  vertex(-cubeSize / 2, -cubeSize / 2, cubeSize / 2);
+  vertex(-cubeSize / 2, cubeSize / 2, cubeSize / 2);
+  vertex(-cubeSize / 2, cubeSize / 2, -cubeSize / 2);
+  endShape(CLOSE);
 
-  // left side
-  fill(color(0x14, 0xf7, 0xff));
-  vertex(-t, -t, -2 * t);
-  vertex(-t, t, -2 * t);
-  vertex(-t, t, 0);
-  vertex(-t, -t, 0);
+  fill(color("#8ab17d"));
+  beginShape();
+  vertex(cubeSize / 2, -cubeSize / 2, -cubeSize / 2); // Right face
+  vertex(cubeSize / 2, -cubeSize / 2, cubeSize / 2);
+  vertex(cubeSize / 2, cubeSize / 2, cubeSize / 2);
+  vertex(cubeSize / 2, cubeSize / 2, -cubeSize / 2);
+  endShape(CLOSE);
 
-  // bottom side
-  fill(color(0x14, 0xff, 0x3b));
-  vertex(-t, t, 0);
-  vertex(t, t, 0);
-  vertex(t, t, -2 * t);
-  vertex(-t, t, -2 * t);
+  fill(color("#2a9d8f"));
+  beginShape();
+  vertex(-cubeSize / 2, -cubeSize / 2, -cubeSize / 2); // Top face
+  vertex(-cubeSize / 2, -cubeSize / 2, cubeSize / 2);
+  vertex(cubeSize / 2, -cubeSize / 2, cubeSize / 2);
+  vertex(cubeSize / 2, -cubeSize / 2, -cubeSize / 2);
+  endShape(CLOSE);
 
-  // top side
-  fill(color(0xf3, 0xff, 0x14));
-  vertex(-t, -t, 0);
-  vertex(t, -t, 0);
-  vertex(t, -t, -2 * t);
-  vertex(-t, -t, -2 * t);
-  endShape();
-
-  // Resore the transformation state
-  pop();
-
-  thetaX = map(mouseX, 0, width, 0, TWO_PI);
-  thetaY = map(mouseY, 0, height, 0, TWO_PI);
-  thetaZ = map((mouseX + mouseY) / 2, 0, (width + height) / 2, 0, TWO_PI);
+  fill(color("#264653"));
+  beginShape();
+  vertex(-cubeSize / 2, cubeSize / 2, -cubeSize / 2); // Bottom face
+  vertex(-cubeSize / 2, cubeSize / 2, cubeSize / 2);
+  vertex(cubeSize / 2, cubeSize / 2, cubeSize / 2);
+  vertex(cubeSize / 2, cubeSize / 2, -cubeSize / 2);
+  endShape(CLOSE);
 }
 
 function windowResized() {
