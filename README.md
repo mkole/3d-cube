@@ -4,7 +4,7 @@
   
   <h3>A 3D cube rotating according to mouse movement. </h3>
 
-<a href="https://3d-cubejs.netlify.app/"><h3>Try me!</h3></a>
+<h3><a href="https://3d-cubejs.netlify.app/">Try me!</a></h3>
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ec161aec-7226-4c20-a967-b48d1ae96cba/deploy-status)](https://app.netlify.com/sites/3d-cubejs/deploys)
 
@@ -39,14 +39,7 @@ A colorful three-dimensional cube that rotates according to the movement of the 
 
 ## License
 
-<<<<<<< HEAD
 <a href="https://www.gnu.org/licenses/agpl-3.0.html"><img src="https://upload.wikimedia.org/wikipedia/commons/0/06/AGPLv3_Logo.svg" height="100px" /></a>
-=======
-<a href="https://www.gnu.org/licenses/gpl-3.0.html"><img src="https://upload.wikimedia.org/wikipedia/commons/9/93/GPLv3_Logo.svg" height="100px" /></a>
-
-Copyright (c) 2022 Michael Kolesidis<br>
-Licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html).
->>>>>>> 48d8f4c14b7121185ecf03cf61ac3f3ed4f61f61
 
 Copyright (c) 2023 Michael Kolesidis<br>
 Licensed under the [GNU Affero General Public License v3.0](https://www.gnu.org/licenses/agpl-3.0.html).
